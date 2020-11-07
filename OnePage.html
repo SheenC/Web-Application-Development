@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+        <title>Green Computing eBook, Typical</title>
+        
+        <meta charset="utf-8" />
+		
+		<style type = "text/css">
+		     body {
+	            margin: 0px;
+             }
+
+            .header {
+	            width: 100%;
+	            height: 100px;
+             }
+
+             .header_ul {
+                font: 80px;
+	            float: left;
+	            list-style: none;
+             }
+
+             .header_ul li { 
+                 color: ForestGreen;
+                 font-size: 20px;
+                 font-weight: bold;
+                 background-color:Palegreen;
+                 text-transform:uppercase;
+	             margin-top: 20px;
+	             margin-left: 15px;
+	             float: left;
+             }
+
+             .header_ul li:hover {
+               	color: White;
+             }
+
+              .header_ul_ul {
+             	width: 200px;
+	            text-align: center;
+	            position: absolute;
+	            list-style: none;
+	            background: ForestGreen;
+            }
+
+
+            .header_ul_ul li {
+             	margin: 10px 15px 10px -25px;
+              	float: none;
+            }
+
+            .header_ul_Paperless .header_ul_ul {
+	              display: none;
+             }
+
+            .header_ul_Reduce .header_ul_ul {
+	             display: none;
+             }
+
+             .header_ul_Reuse .header_ul_ul {
+	             display: none;
+             }
+
+             .header_ul_Energy .header_ul_ul {
+	             display: none;
+             }
+
+
+             .header_ul_Paperless:hover .header_ul_ul {
+	              display: block;
+              }
+
+             .header_ul_Reduce:hover .header_ul_ul {
+	              display: block;
+              }
+
+             .header_ul_Reuse:hover .header_ul_ul {
+	             display: block;
+              }
+
+             .header_ul_Energy:hover .header_ul_ul {
+	             display: block;
+              }
+
+		</style>
+		
+<script>
+var whoami = -1;
+var myhistory = "";
+
+function UX(x) {
+         myhistory = myhistory + x;
+         document.getElementById("historyLog").innerHTML = myhistory;
+}
+
+function UX2(x) {
+         myhistory = myhistory + x;
+         document.getElementById("historyLog2").innerHTML = myhistory;
+}
+
+function setUser(i) {
+         if (typeof(Storage) !== "undefined") {     
+            if (typeof(localStorage.usercount) === "undefined") {
+                localStorage.usercount = 0;
+            }
+            else {
+                localStorage.usercount = i;
+            }
+         }
+}
+
+function myStartup() {
+         if (typeof(Storage) !== "undefined") {
+            if (typeof(localStorage.usercount) === "undefined") {
+                localStorage.usercount = 0;
+            }
+            else {
+                localStorage.usercount++;
+            }
+            
+            userCount = localStorage.usercount;
+            if (userCount < 0) {
+               userType = "unknown";
+               whoami = -1;
+            }
+            if (userCount == 0) {
+               userType = "Naive";
+               whoami = 0;
+            }
+            if ( (userCount > 0) && (userCount < 5) ) {
+               userType = "Novice";
+               whoami = 1;
+            }
+            if ( (userCount >= 5) && (userCount < 10) ) {
+               userType = "Typical";
+               whoami = 2;
+            }
+            if ( userCount >= 10 ) {
+               userType = "Advanced";
+               whoami = 3;
+            }
+            
+            if (typeof(localStorage.ifeature1) === "undefined") {
+               localStorage.ifeature1 = "Try a small value for book quantity like 5";
+            }
+            
+            if (typeof(localStorage.ifeature2) === "undefined") {
+               localStorage.ifeature2 = "Try a medium value for book quantity like 50";
+            }
+            
+            if (typeof(localStorage.ifeature3) === "undefined") {
+               localStorage.ifeature3 = "Try a large value for book quantity like 200";
+            }
+            
+            if (typeof(localStorage.ifeature4) === "undefined") {
+               localStorage.ifeature4 = "Try a small value for page quantity per book like 50";
+            }
+            
+            if (typeof(localStorage.ifeature5) === "undefined") {
+               localStorage.ifeature5 = "Try a medium value for page quantity per book like 300";
+            }
+            
+            if (typeof(localStorage.ifeature6) === "undefined") {
+               localStorage.ifeature6 = "Try a large value for page quantity per book like 800";;
+            }
+        
+	        document.getElementById("feature1").innerHTML = localStorage.ifeature1;
+            document.getElementById("feature2").innerHTML = localStorage.ifeature2;
+            document.getElementById("feature3").innerHTML = localStorage.ifeature3;
+            document.getElementById("feature4").innerHTML = localStorage.ifeature4;
+            document.getElementById("feature5").innerHTML = localStorage.ifeature5;
+            document.getElementById("feature6").innerHTML = localStorage.ifeature6;
+        
+            document.getElementById("UType").innerHTML = "&nbsp;&nbsp;#" + whoami + " " + userType + " " + userCount;
+         }
+         
+         else {
+             alert("No Local Storage");
+         }
+         
+         switch (whoami) {
+         case 0: /* Naive */
+             document.getElementById("ebook11").style.display = "block";
+             document.getElementById("ebook15").style.display = "block";
+             break;
+         
+         
+         case 1: /* Novice */
+             document.getElementById("ebook41").style.display = "block";
+             document.getElementById("ebook42").style.display = "block";
+             document.getElementById("ebook44").style.display = "block";
+             break;
+         
+         
+         case 2: /* Typical */
+             document.getElementById("ebook21").style.display = "block";
+             document.getElementById("ebook22").style.display = "block";
+             document.getElementById("ebook23").style.display = "block";
+             break;
+         
+         
+         case 3: /* Advanced */
+             document.getElementById("ebook31").style.display = "block";
+             document.getElementById("ebook33").style.display = "block";
+             document.getElementById("ebook34").style.display = "block";
+             document.getElementById("ebook35").style.display = "block";
+             document.getElementById("ebook37").style.display = "block";
+             break;
+             
+         default: /* no storage */
+             document.getElementById("ebook31").style.display = "block";
+             document.getElementById("ebook33").style.display = "block";
+             document.getElementById("ebook34").style.display = "block";
+             document.getElementById("ebook35").style.display = "block";
+             document.getElementById("ebook37").style.display = "block";
+             break;
+        }
+}
+
+function Sorry() {
+         alert("Sorry! We are still developing this part!");
+}
+
+function Already(){
+         alert("My friend! You are already visiting the e-book part!");
+}
+
+function playGames(){
+    var totalResult;
+    
+    alert("In this game, you will answer three questions. If all three questions is answered correctly, you win!");
+    
+    answer1 = prompt("Is eBook an important part of Green Computing?(Please answer yes or no)");
+    result1 = (answer1=="yes") ? "You are correct!":"Sorry, that is not correct.";
+    alert(result1);
+    
+    answer2 = prompt("The exist of eBooks means we can use paperless tools to read books. Is this correct? (Please answer yes or no)");
+    result2 = (answer2=="yes") ? "You are correct!":"Sorry, that is not correct.";
+    alert(result2);
+    
+    answer3 = prompt("EBooks are more harmful to the environment compared to paper books. Is this correct? (Please answer yes or no)");
+    result3 = (answer3=="no") ? "You are correct!":"Sorry, that is not correct.";
+    alert(result3);
+    
+    if ((answer1=="yes") && (answer2=="yes") && (answer3=="no")){
+       totalResult = "Congratulations! You win!";
+    }
+    else{
+       totalResult = "Sorry! You lose the game! If you want to play it again, please click the Games button!";
+    }
+    alert(totalResult);
+}
+
+function submitDone1(){
+    document.getElementById("received1").style.display="block";
+    document.getElementById("suggestions1").value = "";
+    alert("You have submitted your suggestions successfully!");
+}
+
+
+
+function NaiveStart() {
+	document.getElementById("ebook12").style.display='block';
+	document.getElementById("ebook14").style.display='block';
+}
+ 
+function Calculator1() {
+    var b, p;
+
+    b = document.getElementById("books1").value;
+    p = document.getElementById("pages1").value;
+
+	t = b*p/3000;
+    text = "We can save " + t + " trees if we use e-books instead."  
+    document.getElementById("result1").innerHTML = text;
+    document.getElementById("coach2").style.display="none";
+}
+
+function Input1() {
+	document.getElementById("ebook12").style.display='none';
+	document.getElementById("ebook13").style.display='block';
+}
+
+function wizard11() {
+         document.getElementById("books1").value=100;
+         document.getElementById("pages1").value=300;
+}
+
+function wizard12() {
+         document.getElementById("books1").value=1000;
+         document.getElementById("pages1").value=300;
+}
+
+function wizard13() {
+         document.getElementById("books1").value=10000;
+         document.getElementById("pages1").value=300;
+}
+
+
+function Coachmark1() {
+         document.getElementById("coach1").style.display="none";
+         document.getElementById("coach2").style.display="block";	
+}
+
+function showhint11() {
+         document.getElementById("hint11").style.display="block";
+}
+
+function hidehint11() {
+         document.getElementById("hint11").style.display="none";
+}
+
+function showhint12() {
+         document.getElementById("hint12").style.display="block";
+} 
+
+function hidehint12() {
+         document.getElementById("hint12").style.display="none";
+}
+
+
+function submitDone4(){
+    document.getElementById("received4").style.display="block";
+    document.getElementById("suggestions4").value = "";
+    alert("You have submitted your suggestions successfully!");
+}
+
+
+function Calculator4() {
+    var b, p;
+
+    b = document.getElementById("books4").value;
+    p = document.getElementById("pages4").value;
+
+	t = b*p/3000;
+    text = "We can save " + t + " trees if we use e-books instead."  
+    document.getElementById("result4").innerHTML = text;
+}
+
+function Input4() {
+	document.getElementById("ebook42").style.display='none';
+	document.getElementById("ebook43").style.display='block';
+}
+
+function wizard41() {
+         document.getElementById("books4").value=100;
+         document.getElementById("pages4").value=300;
+}
+
+function wizard42() {
+         document.getElementById("books4").value=1000;
+         document.getElementById("pages4").value=300;
+}
+
+function wizard43() {
+         document.getElementById("books4").value=10000;
+         document.getElementById("pages4").value=300;
+}
+
+function showhint41() {
+         document.getElementById("hint41").style.display="block";
+}
+
+function hidehint41() {
+         document.getElementById("hint41").style.display="none";
+}
+
+function showhint42() {
+         document.getElementById("hint42").style.display="block";
+} 
+
+function hidehint42() {
+         document.getElementById("hint42").style.display="none";
+}
+
+
+
+function submitDone2(){
+    document.getElementById("received2").style.display="block";
+    document.getElementById("suggestions2").value = "";
+    alert("You have submitted your suggestions successfully!");
+}
+
+function meter21() {
+                m3 += 40;
+                document.getElementById("meter2").innerHTML += " " + "&gt&gt " + m3 + "%";
+                document.getElementById("nextsteps21").style.display="none";
+}
+
+function meter22() {
+                m3 += 40;
+                document.getElementById("meter2").innerHTML += " " + "&gt&gt " + m3 + "%";
+                document.getElementById("nextsteps22").style.display="none";
+}
+
+function Calculator2() {
+    var b, p;
+
+    b = document.getElementById("books2").value;
+    p = document.getElementById("pages2").value;
+
+	t = b*p/3000;
+    text = "We can save " + t + " trees if we use e-books instead."  
+    document.getElementById("result2").innerHTML = text;
+    
+    UX(8);
+    
+    document.getElementById("meter2").innerHTML += " " + "&gt&gt " + 100 + "%";
+    m3 = 0;
+    document.getElementById("nextsteps23").style.display="none";
+}
+
+function InputHelp() {
+    alert("Please enter the number of books in the first input box, the number of pages per book in the second input box. For example, you can input '100' books, with each book has '300' pages. BOOKS means paper, traditional, printed copies of the book that would be requested to be printed if the eBook was not requested instead. PAGES means the number of pages within the paper, traditional, printed copy of the book. ");
+    UX(5);
+}
+
+function submitDone3(){
+    document.getElementById("received3").style.display="block";
+    document.getElementById("suggestions3").value = "";
+    alert("You have submitted your suggestions successfully!");
+}
+
+
+function prosCons(){
+    document.getElementById("ebook32").style.display = "block";
+}
+
+function hideProscons(){
+    document.getElementById("ebook32").style.display = "none";
+}
+
+
+var m3 = 0;
+
+function Calculator3() {
+    var b, p;
+
+    b = document.getElementById("books3").value;
+    p = document.getElementById("pages3").value;
+    s1 = document.getElementById("unit1").checked;
+	s2 = document.getElementById("unit2").checked;
+	s3 = document.getElementById("unit3").checked;
+	text = "Please click the 'Settings' button and select the unit of measurement first!";
+    if (s1) {
+        t = b*p/3000;
+        text = "We can save " + t + " trees if we use e-books instead."; 
+        localStorage.settings = 0;
+    }
+    if (s2) {
+        t = (b*p/3000)/20;
+        text = "We can save " + t + " groves if we use e-books instead.";
+        localStorage.settings = 1;
+    }
+    if (s3) {
+        t1 = b*p/3000;
+        t2 = (b*p/3000)/20;
+        text = "We can save " + t1 + " trees or " + t2 + " groves if we use e-books instead.";
+        localStorage.settings = 2;
+    }
+    document.getElementById("result3").innerHTML = text;
+    
+    UX2(8);
+    
+    if (typeof(Storage) !== "undefined") {
+        localStorage.value1 = document.getElementById("books3").value;
+        localStorage.value2 = document.getElementById("pages3").value;
+        localStorage.myvals1 = document.getElementById("myvals31").innerHTML;
+        localStorage.myvals2 = document.getElementById("myvals32").innerHTML;
+
+    }
+    
+    var x, y;
+    
+    x = document.getElementById("books3").value;
+    y = document.getElementById("pages3").value;
+    
+	if (x <= 10) {
+        localStorage.ifeature1 = " ";
+	    document.getElementById("feature1").innerHTML = " ";
+	}	
+	else if ((x > 10) && (x <= 100)) {
+        localStorage.ifeature2 = " "; 
+        document.getElementById("feature2").innerHTML = " ";
+	}
+	else if (x > 100) {
+        localStorage.ifeature3 = " ";
+        document.getElementById("feature3").innerHTML = " ";
+	}
+	
+	if (y <= 100) {
+        localStorage.ifeature4 = " ";
+        document.getElementById("feature4").innerHTML = " ";
+	}
+	else if ((y > 100) && (y <= 500)) {
+        localStorage.ifeature5 = " ";
+        document.getElementById("feature5").innerHTML = " ";
+	}
+	else if (y > 500) {
+        localStorage.ifeature6 = " ";
+        document.getElementById("feature6").innerHTML = " ";
+	}
+	
+    document.getElementById("meter3").innerHTML += " " + "&gt&gt " + 100 + "%";
+    m3 = 0;
+    document.getElementById("nextsteps34").style.display="none";
+}
+
+function Overflow() {
+    document.getElementById("ebook36").style.display="block";
+    UX(5);
+    
+    m3 += 20;
+    document.getElementById("meter3").innerHTML += " " + "&gt&gt " + m3 + "%";
+    document.getElementById("nextsteps31").style.display="none";
+}
+
+function defaultValue() {
+    if (typeof(Storage) !== "undefined") {
+       if (typeof(localStorage.value1) !== "undefined") {
+           document.getElementById("books3").value = localStorage.value1;
+       }
+       else {
+            alert("No default values or settings! Please input and set by yourself.")
+       }
+       
+       if (typeof(localStorage.value2) !== "undefined") {
+           document.getElementById("pages3").value = localStorage.value2;
+       }
+       else {
+            alert("No default values or settings! Please input and set by yourself.")
+       }
+       
+       if (typeof(localStorage.settings) !== "undefined") {
+           if (localStorage.settings == 0) {
+               document.getElementById("unit1").checked = true;
+           }
+           if (localStorage.settings == 1) {
+               document.getElementById("unit2").checked = true;
+           }
+           if (localStorage.settings == 2) {
+               document.getElementById("unit3").checked = true;
+           }
+       }
+       else {
+            alert("No default values or settings! Please input and set by yourself.")
+       }
+
+       if (typeof(localStorage.myvals1) !== "undefined") {
+           document.getElementById("myvals31").innerHTML = localStorage.myvals1;
+       }
+       
+       if (typeof(localStorage.myvals2) !== "undefined") {
+           document.getElementById("myvals32").innerHTML = localStorage.myvals2;
+       }
+
+    }
+}
+
+function myInput31() {
+         x = document.getElementById("books3").value;
+         
+         if (x <= 10) {
+            document.getElementById("myvals31").innerHTML = "A typical small one for the quantity of book(s) is 5";
+         }
+         
+         else if ( (x > 10) && (x <= 100)) {
+            document.getElementById("myvals31").innerHTML = "A typical medium one for the quantity of book(s) is 50";
+         }
+         
+         else if (x > 100) {
+            document.getElementById("myvals31").innerHTML = "A typical large one for the quantity of book(s) is 200";
+         }   
+         
+         else {
+            document.getElementById("myvals31").innerHTML = " ";
+         }     
+}
+
+function meter31() {
+                m3 += 30;
+                document.getElementById("meter3").innerHTML += " " + "&gt&gt " + m3 + "%";
+                document.getElementById("nextsteps32").style.display="none";
+}
+
+function myInput32() {
+         x = document.getElementById("pages3").value;
+         
+         if (x <= 100) {
+            document.getElementById("myvals32").innerHTML = "A typical small one for the quantity of page(s) is 50";
+         }
+         
+         else if ( (x > 100) && (x <= 500)) {
+            document.getElementById("myvals32").innerHTML = "A typical medium one for the quantity of page(s) is 300";
+         }
+         
+         else if (x > 500) {
+            document.getElementById("myvals32").innerHTML = "A typical large one for the quantity of page(s) is 800";
+         }   
+         
+         else {
+            document.getElementById("myvals32").innerHTML = " ";
+         }                    
+}
+
+function meter32() {
+             m3 += 30;
+             document.getElementById("meter3").innerHTML += " " + "&gt&gt " + m3 + "%";
+             document.getElementById("nextsteps33").style.display="none";
+}
+
+function restorefeatures() {
+	        localStorage.ifeature1 = "Try a small value for book quantity like 5";
+            localStorage.ifeature2 = "Try a medium value for book quantity like 50";
+            localStorage.ifeature3 = "Try a large value for book quantity like 200";
+            localStorage.ifeature4 = "Try a small value for page quantity per book like 50";
+            localStorage.ifeature5  = "Try a medium value for page quantity per book like 300";
+            localStorage.ifeature6 = "Try a large value for page quantity per book like 800";
+            
+            document.getElementById("feature1").innerHTML = localStorage.ifeature1;
+            document.getElementById("feature2").innerHTML = localStorage.ifeature2;
+            document.getElementById("feature3").innerHTML = localStorage.ifeature3;
+            document.getElementById("feature4").innerHTML = localStorage.ifeature4;
+            document.getElementById("feature5").innerHTML = localStorage.ifeature5;
+            document.getElementById("feature6").innerHTML = localStorage.ifeature6;
+            
+}
+
+</script>	
+</head>
+
+
+<body background="./cloud.jpg" onload="myStartup();">
+<p><h2 style="color:ForestGreen;">
+<a href="./SiteMap.html" > Computing Website </a>
+&gt
+E-Books 
+</h2></p>
+
+<button onclick="setUser(-1);">Naive</button>
+<button onclick="setUser(3);">Novice</button>
+<button onclick="setUser(7);">Typical</button>
+<button onclick="setUser(20);">Advanced</button>
+<button onclick="setUser(-10);">Unknown</button>
+<span id="UType"></Span>
+
+<hr/>
+
+<p>
+
+		<div class="header">
+			<ul class="header_ul">
+				<li class="header_ul_Paperless">Paperless
+					<ul class="header_ul_ul">
+						<li onclick="Sorry()">News Online</li>
+						<li onclick="Sorry()" >Class Material Online</li>
+						<li onclick="Sorry()">Paperless Office</li>
+						<li onclick="Already()">E-books</li>
+					</ul>
+				</li>
+
+				<li class="header_ul_Reduce">Reduce
+					<ul class="header_ul_ul">
+						<li onclick="Sorry()">Just in Time Inventory</li>
+						<li onclick="Sorry()">Online Meetings</li>
+						<li onclick="Sorry()">E-gifts</li>
+					</ul>
+				</li>
+				<li class="header_ul_Reuse">Reuse & Recycle
+					<ul class="header_ul_ul">
+						<li onclick="Sorry()">Ewaste & Electronic Recycling</li>
+						<li onclick="Sorry()">Cycle of purchasing</li>
+						<li onclick="Sorry()">Reusing Old computers</li>
+					</ul>
+				</li>
+				<li class="header_ul_Energy">Energy
+					<ul class="header_ul_ul">
+						<li onclick="Sorry()">Wasted Energy</li>
+						<li onclick="Sorry()">Smart Buildings</li>
+						<li onclick="Sorry()">Computer inefficiencies</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+	
+</p>
+
+
+
+<!--The first version, naive-->
+<p id="ebook11" style="color:ForestGreen;display:none;">
+<b>Hi! Welcome to the eBook part!</b>
+</br>Since this is your first time to visit this part, you will receive some guidance.
+</br>
+
+</br><b>Definition of Green Computing</b>
+</br>Green computing, green ICT as per International Federation of Global & Green ICT "IFGICT", green IT, or ICT sustainability, 
+is the study and practice of environmentally sustainable computing or IT.
+The goals of green computing are similar to green chemistry: reduce the use of hazardous materials, maximize energy efficiency during the product's lifetime, 
+the recyclability or biodegradability of defunct products and factory waste. 
+Green computing is important for all classes of systems, ranging from handheld systems to large-scale data centers.
+Many corporate IT departments have green computing initiatives to reduce the environmental effect of their IT operations.
+</br>The definition of Green Computing is from  
+<a href="https://en.wikipedia.org/wiki/Green_computing" > WikiPedia</a>
+.
+<b id="wikiGuidance1" style="color:Black">&lt CLICK THIS LINK TO WIKIPEDIA PAGE</b>
+</br>
+
+</br><b>Pros and Cons of E-Book and Paper Book</b>
+</br><b>&lt E-book</b>
+</br>&lt &lt Pros:
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>E-books are easy to carry and can be viewed at any time for your convenience.
+</br>E-books are convenient and affordable to buy online.
+</br>&lt &lt Cons:
+</br>It is not convenient to take notes using read-only devices.
+</br><b>&lt Paper book</b>
+</br>&lt &lt Pros:
+</br>It is convenient to take notes.
+</br>Some paper books are commemorative.
+</br>&lt &lt Cons:
+</br>The manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>
+
+</br><b>EBooks and Green Computing</b>
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>However, the manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>E-book is an fundamental part of Green Computing!
+</br>
+
+</br><b>Calculator</b>
+<b style="color:black;">&lt PLEASE TRY THIS CALCULATOR</b>
+</br><b style="color:black;">PLEASE READ THE DIRECTION BEFORE START. </b>
+</br> A 20-year old tree can produce 3000 pieces of A4-size paper. Using e-books can protect trees from being cut down.
+</br> You can use this calculator to see how many trees can be saved if we use e-books instead.
+</br> <button type="button" onclick="NaiveStart()">START</button>
+</p>
+
+<p id="ebook12" style="color:ForestGreen;display:none;">
+<input id="books1" value="Number of books" onmouseover="showhint11()" onmouseleave="hidehint11()" onkeydown="Coachmark1()">books, with each book has
+<input id = "pages1" value = "Number of pages each book has" onmouseover="showhint12()" onmouseleave="hidehint12()" onkeydown="Coachmark1()">pages
+</br><b id="coach1" style="display:block;color:yellow;">^ ENTER A NUMBER</b>
+<b id="hint11" style = "display:none;color:yellow;"> Please enter the number of paper, traditional, printed copies of the book that would be requested to be printed if the eBook was not requested instead.</b>
+<b id="hint12" style = "display:none;color:yellow;"> Please enter the number of pages within the paper, traditional, printed copy of the book.</b>
+</p>
+
+<p id="ebook13" style="display:none;color:ForestGreen;">
+<input type=radio name=myradio onclick="wizard11()" >100 books, 300 pages per book<br>
+<input type=radio name=myradio onclick="wizard12()">1000 books, 300 pages per book<br>
+<input type=radio name=myradio onclick="wizard13()">10000 books, 300 pages per book<br>
+</p>
+
+<p id="ebook14" style="color:ForestGreen;display:none;">
+<b id = "result1" style="color:black"></b>
+</br>
+<button type="button" onclick="Calculator1()">Submit</button>
+<button type="button" onclick="Input1()">Simple</button>
+</br><b id="coach2" style="display:none;color:yellow;">^ PRESS THE BUTTON "Submit"</b>
+</br></br>
+</p>
+
+<p id="ebook15" style="color:ForestGreen;display:none;">
+</br><b>Just for Fun!</b>
+</br>Please click the button "Games" to play a quiz game if you like. It is helpful to master basic knowledge about eBooks!
+</br><button id = "games1" type="button" onclick="playGames()">Games</button>
+<b id="gameGuidance1" style="color:Black">&lt CLICK THIS BUTTON TO START THE GAME</b>
+</br>
+
+</br><b>Your Suggestions</b>
+</br>Do you like the e-book part? You can leave your suggestions to us!
+</br>
+<input id="suggestions1"> 
+<button id = "submitsuggestions1" type="button" onclick="submitDone1()">SUBMIT</button>
+<b id="suggestionsGuidance1" style="color:Black">&lt LEAVE YOUR SUGGESTIONS IN THE BOX AND CLICK THE SUBMIT BUTTON</b>
+</br>
+<b id="received1" style="display:none;color:Black">We have received your suggestions successfully! If you have more questions, please contact xiyinc@andrew.cmu.edu</b>
+
+
+</br>
+</br><b style="color:Black">Feel free to explore other parts of the website! Just click on each entry of the menu bar!</b>
+</br>
+
+</p>
+
+
+
+<!--The added fourth version, novice-->
+<p id="ebook41" style="color:ForestGreen;display:none;">
+<b>Hi! Welcome to the eBook part!</b>
+</br>Since you may not be so familiar with this website, you will receive some guidance.
+</br>
+
+</br><b>Definition of Green Computing</b>
+</br>Green computing, green ICT as per International Federation of Global & Green ICT "IFGICT", green IT, or ICT sustainability, 
+is the study and practice of environmentally sustainable computing or IT.
+The goals of green computing are similar to green chemistry: reduce the use of hazardous materials, maximize energy efficiency during the product's lifetime, 
+the recyclability or biodegradability of defunct products and factory waste. 
+Green computing is important for all classes of systems, ranging from handheld systems to large-scale data centers.
+Many corporate IT departments have green computing initiatives to reduce the environmental effect of their IT operations.
+</br>The definition of Green Computing is from 
+<a href="https://en.wikipedia.org/wiki/Green_computing" > WikiPedia</a>
+.
+</br>
+
+</br><b>Pros and Cons of E-Book and Paper Book</b>
+</br><b>&lt E-book</b>
+</br>&lt &lt Pros:
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>E-books are easy to carry and can be viewed at any time for your convenience.
+</br>E-books are convenient and affordable to buy online.
+</br>&lt &lt Cons:
+</br>It is not convenient to take notes using read-only devices.
+</br><b>&lt Paper book</b>
+</br>&lt &lt Pros:
+</br>It is convenient to take notes.
+</br>Some paper books are commemorative.
+</br>&lt &lt Cons:
+</br>The manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>
+
+</br><b>EBooks and Green Computing</b>
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>However, the manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>E-book is an fundamental part of Green Computing!
+</br>
+
+</br><b>Calculator</b>
+<b style="color:black;">&lt PLEASE TRY THE CALCULATOR!</b>
+</br> A 20-year old tree can produce 3000 pieces of A4-size paper. Using e-books can protect trees from being cut down.
+</br> You can use this calculator to see how many trees can be saved if we use e-books instead.
+</br> 
+</p>
+
+<p id="ebook42" style="color:ForestGreen;display:none;">
+<input id="books4" onmouseover="showhint41()" onmouseleave="hidehint41()">books, with each book has
+<input id = "pages4" onmouseover="showhint42()" onmouseleave="hidehint42()">pages
+<b id="hint41" style = "display:none;color:yellow;"> Please enter the number of paper, traditional, printed copies of the book that would be requested to be printed if the eBook was not requested instead.</b>
+<b id="hint42" style = "display:none;color:yellow;"> Please enter the number of pages within the paper, traditional, printed copy of the book.</b>
+</p>
+
+<p id="ebook43" style="display:none;color:ForestGreen;">
+<input type=radio name=myradio onclick="wizard41()" >100 books, 300 pages per book<br>
+<input type=radio name=myradio onclick="wizard42()">1000 books, 300 pages per book<br>
+<input type=radio name=myradio onclick="wizard43()">10000 books, 300 pages per book<br>
+</p>
+
+<p id="ebook44" style="color:ForestGreen;display:none;">
+<b id = "result4" style="color:black"></b>
+</br>
+<button type="button" onclick="Calculator4()">Submit</button>
+<button type="button" onclick="Input4()">Simple</button>
+</br>
+
+</br><b>Just for Fun!</b>
+</br>Please click the button "Games" to play a quiz game if you like. It is helpful to master basic knowledge about eBooks!
+</br><button id = "games4" type="button" onclick="playGames()">Games</button>
+</br>
+
+</br><b>Your Suggestions</b>
+</br>Do you like the e-book part? You can leave your suggestions to us!
+</br>
+<input id="suggestions4"> 
+<button id = "submitsuggestions4" type="button" onclick="submitDone4()">SUBMIT</button>
+</br><b id="received4" style="display:none;color:Black">We have received your suggestions successfully! If you have more questions, please contact xiyinc@andrew.cmu.edu</b>
+
+
+</br>
+</br><b style="color:Black">Feel free to explore other parts of the website! Just click on each entry of the menu bar!</b>
+</br>
+
+</p>
+
+
+
+<!--The second version-->
+<p id="ebook21" style="color:ForestGreen;display:none;">
+<b style="color:black;">Completeness Meter</b>
+</br><span id="historyLog" style="color:black;"></span>
+</br>
+</br>
+<span onmouseover="UX(1)">
+<b>Hi! Welcome to the eBook part!</b>
+</br>Since you have used this part before, you will not see the detailed guidance on this page.
+</br>
+
+</br><b>Pros and Cons of E-Book and Paper Book</b>
+</br><b>&lt E-book</b>
+</br>&lt &lt Pros:
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>E-books are easy to carry and can be viewed at any time for your convenience.
+</br>E-books are convenient and affordable to buy online.
+</br>&lt &lt Cons:
+</br>It is not convenient to take notes using read-only devices.
+</br><b>&lt Paper book</b>
+</br>&lt &lt Pros:
+</br>It is convenient to take notes.
+</br>Some paper books are commemorative.
+</br>&lt &lt Cons:
+</br>The manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>
+
+</br><b>EBooks and Green Computing</b>
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>However, the manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>E-book is an fundamental part of Green Computing!
+</span>
+</br>
+
+<span onmouseover="UX(4)">
+</br><b>Calculator</b>
+<b style="color:black;">&lt PLEASE TRY THE CALCULATOR!</b>
+</br> A 20-year old tree can produce 3000 pieces of A4-size paper. Using e-books can protect trees from being cut down.
+</br> You can use this calculator to see how many trees can be saved if we use e-books instead.
+</span>
+</br> 
+</p>
+
+<p id="ebook22" style="color:ForestGreen;display:none;">
+</br> <span id = "meter2" style = "color:black;">Completeness meter: 0%</span>
+</br> <span id = "nextsteps20" style = "color:black;">Next Steps:</span>
+</br> <span id = "nextsteps21" style = "color:black;"> &gt Input number of books.</span>
+</br> <span id = "nextsteps22" style = "color:black;"> &gt Input number of pages per book.</span>
+</br> <span id = "nextsteps23" style = "color:black;"> &gt Click the button.</span>
+</br>
+</br><input id="books2" onmouseover="UX(3)" onclick="meter21()">books, with each book has
+<input id = "pages2" onmouseover="UX(3)" onclick="meter22()">pages
+</br>
+
+
+<p id="ebook23" style="color:ForestGreen;display:none;">
+<b id = "result2" style="color:black"></b>
+</br>
+<button type="button" onclick="Calculator2()" onmouseover="UX(2)">Submit</button>
+<button type="button" onclick="InputHelp()" onmouseover="UX(2)">Help</button>
+</br>
+
+<span onmouseover="UX(1)">
+</br><b>Just for Fun!</b>
+</br>Please click the button "Games" to play a quiz game if you like. It is helpful to master basic knowledge about eBooks!
+</br><button id = "games2" type="button" onclick="playGames()">Games</button>
+</br>
+
+</br><b>Your Suggestions</b>
+</br>Do you like the eBook part? You can leave your suggestions to us!
+</br>
+<input id="suggestions2"> 
+<button id = "submitsuggestions2" type="button" onclick="submitDone2()">SUBMIT</button>
+</br>
+<b id="received2" style="display:none;color:Black">We have received your suggestions successfully! If you have more questions, please contact xiyinc@andrew.cmu.edu</b>
+
+</br>
+</br><b style="color:Black">Feel free to explore other parts of the website! Just click on each entry of the menu bar!</b>
+</span>
+</br>
+
+</p>
+
+
+
+<!--The third version-->
+<p id="ebook31" style="color:ForestGreen;display:none;">
+<b style="color:black;">Event Track</b>
+</br><span id="historyLog2" style="color:black;"></span>
+</br>
+</br>
+<span onmouseover="UX2(1)">
+<b>Hi! Welcome to the eBook part!</b>
+</br>Since you are quite familiar with this part, you will see brief information on this page.
+</br>
+
+</br><b>Pros and Cons of E-Book and Paper Book</b>
+</br><button id = "button3_2_1" type="button" onclick="prosCons()">See more details</button>
+<button id = "button3_2_2" type="button" onclick="hideProscons()">Hide details</button>
+</span>
+</p>
+
+<p id="ebook32" style="display:none;color:ForestGreen;" onmouseover="UX2(1)">
+<b>&lt E-book</b>
+</br>&lt &lt Pros:
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>E-books are easy to carry and can be viewed at any time for your convenience.
+</br>E-books are convenient and affordable to buy online.
+</br>&lt &lt Cons:
+</br>It is not convenient to take notes using read-only devices.
+</br><b>&lt Paper book</b>
+</br>&lt &lt Pros:
+</br>It is convenient to take notes.
+</br>Some paper books are commemorative.
+</br>&lt &lt Cons:
+</br>The manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>
+</p>
+
+<p id="ebook33" style="color:ForestGreen;display:none;">
+<span onmouseover="UX2(1)">
+</br><b>EBooks and Green Computing</b>
+</br>E-book production does not waste natural resources or create pollution, which is environmentally friendly and more sustainable.
+</br>However, the manufacture of paper books will increase the amount of wood used and cause environment pollution.
+</br>E-book is an fundamental part of Green Computing!
+</span>
+</br>
+
+<span onmouseover="UX2(4)">
+</br><b>Calculator</b>
+</br> A 20-year old tree can produce 3000 pieces of A4-size paper. Using e-books can protect trees from being cut down.
+</br> You can use this calculator to see how many trees can be saved if we use e-books instead.
+</br> Clicking the "Settings" button, you can select the unit of measurement. A GROVE is a collection of 20 TREEs.
+</br>
+</span>
+</p>
+
+<p id="ebook34" style="color:ForestGreen;display:none;">
+</br> <span id = "meter3" style = "color:black;">Completeness meter: 0%</span>
+</br> <span id = "nextsteps30" style = "color:black;">Next Steps:</span>
+</br> <span id = "nextsteps31" style = "color:black;"> &gt Click on the Settings button and select unit of measurement.</span>
+</br> <span id = "nextsteps32" style = "color:black;"> &gt Input number of books.</span>
+</br> <span id = "nextsteps33" style = "color:black;"> &gt Input number of pages per book.</span>
+</br> <span id = "nextsteps34" style = "color:black;"> &gt Click the button.</span>
+</br>
+</br><input id="books3" onmouseover="UX2(3)" onkeyup="myInput31()" onclick="meter31()">books, with each book has
+<input id ="pages3" onmouseover="UX2(3)" onkeyup="myInput32()" onclick="meter32()">pages
+</br>
+</br><b id = "result3" style="color:black"></b>
+</br>
+</br><span id = "myvals31" style="color:black;"></span>
+</br><span id = "myvals32" style="color:black;"></span>
+</br>
+</br><span id = "feature1" style="color:grey">Try a small value for book quantity like 5</span>
+</br><span id = "feature2" style="color:grey">Try a medium value for book quantity like 50</span>
+</br><span id = "feature3" style="color:grey">Try a large value for book quantity like 200</span>
+</br>
+</br><span id = "feature4" style="color:grey">Try a small value for page quantity per book like 50</span>
+</br><span id = "feature5" style="color:grey">Try a medium value for page quantity per book like 300</span>
+</br><span id = "feature6" style="color:grey">Try a large value for page quantity per book like 800</span>
+</br>
+
+
+<p id="ebook35" style="color:ForestGreen;display:none;">
+</br>
+<button type="button" onclick="Calculator3()" onmouseover="UX2(2)">Submit</button>
+<button type="button" onclick="InputHelp()" onmouseover="UX2(2)">Help</button>
+<button type="button" onclick="Overflow()" onmouseover="UX2(2)">Settings</button>
+<button type="button" onclick="defaultValue()" onmouseover="UX2(2)">Use Default Values and Settings</button>
+<button type="button" onclick="restorefeatures()" onmouseover="UX2(2)">Restore the feature selections to original state</button>
+
+</p>
+
+<p id="ebook36" style="display:none;color:black;" onmouseover="UX2(9)">
+<input type=radio id="unit1" name=myradio value = "0">Trees<br>
+<input type=radio id="unit2" name=myradio value = "1">Groves<br>
+<input type=radio id="unit3" name=myradio value = "2">Both<br>
+</p>
+
+
+<p id="ebook37" style="color:ForestGreen;display:none;" onmouseover="UX2(1)">
+</br><b>Your Suggestions</b>
+</br>Do you like the eBook part? You can leave your suggestions to us!
+</br>
+<input id="suggestions3"> 
+<button id = "submitsuggestions3" type="button" onclick="submitDone3()">SUBMIT</button>
+<b id="received3" style="display:none;color:Black">We have received your suggestions successfully! If you have more questions, please contact xiyinc@andrew.cmu.edu</b>
+</br>
+</br><b style="color:Black">Feel free to explore other parts of the website! Just click on each entry of the menu bar!</b>
+</br>
+</p>
+
+
+
+
+<hr/>
+
+<p align="center">This webpage is designed by Xiyin Chu. Contact information: xiyinc@andrew.cmu.edu</p>
+
+
+
+
+
+
+</body>
+</html> 
+
+
+
